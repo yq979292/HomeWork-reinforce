@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./jquery-3.6.0.js"></script>
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .box {
+        width: 1467px;
+        margin: auto;
+        position: relative;
+      }
+      .lunbo {
+        position: relative;
+        width: 1267px;
+        height: 307px;
+        margin: auto;
+        overflow: hidden;
+      }
+      .ull {
+        display: flex;
+        list-style: none;
+        margin-left: 0px;
+        transition: all 1s;
+      }
+      .ull > li {
+        width: 1267px;
+        height: 307px;
+      }
+      .ull > li > img {
+        width: 1267px;
+      }
+
+      .btn-l,
+      .btn-r {
+        height: 70px;
+        width: 40px;
+        background-image: url(./img/9.png);
+        position: absolute;
+        top: calc(50% - 35px);
+      }
+
+      .btn-l {
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+      }
+
+      .btn-r {
+        right: 0;
+        background-position-x: -41px;
+        border-bottom-left-radius: 30px;
+        border-top-left-radius: 30px;
+      }
+
+      .donghua {
+        margin-top: 50px;
+        width: 1267px;
+        height: 200px;
+        margin: auto;
+        margin-top: 100px;
+        text-align: center;
+      }
+
+      @keyframes swing-left {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .donghua > img:nth-child(1) {
+        animation: swing-left 2000ms 100ms linear infinite;
+      }
+
+      main {
+        width: 1000px;
+        height: 1000px;
+        position: absolute;
+        top: 0;
+        z-index: 20;
+        left: 13.5%;
+      }
+      main > div:nth-child(1) {
+        position: absolute;
+        width: 75px;
+        height: 75px;
+        top: 47%;
+        left: 50%;
+        transform: rotateZ(0deg);
+      }
+
+      main > div:nth-child(2) {
+        position: absolute;
+        width: 760px;
+        height: 900px;
+        border: 1px solid rgb(215, 213, 213);
+        left: 160px;
+        top: -910px;
+        transition: all 0.5s;
+        background-color: #ffffff;
+        border-radius: 10px;
+      }
+
+      .tx > img {
+        border-radius: 10px;
+      }
+
+      @keyframes swing-right {
+        0% {
+          transform: rotate(360deg);
+        }
+
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+      .tx {
+        animation: swing-right 2000ms 100ms linear infinite;
+      }
+      /* .tx:hover {
+        transition: all 0.5s;
+        transform: rotateZ(360deg);
+      } */
+
+      .tu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        list-style: none;
+      }
+      .tu > li {
+        width: 75px;
+        height: 75px;
+        margin: 5px;
+      }
+      .tu > li > img {
+        width: 100%;
+        transition: all 0.2s;
+        border-radius: 10px;
+      }
+      .tu > li > img:hover {
+        width: 110%;
+        /* transform: scale(1.1, 1.1); */
+      }
+
+      .an {
+        display: flex;
+        justify-content: center;
+      }
+      .an > button:nth-child(2) {
+        background-color: #4b8bf5;
+      }
+      button {
+        width: 100px;
+        height: 40px;
+        margin-top: 300px;
+        margin-left: 5px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 盒子 -->
+
+    <div class="box">
+      <div class="lunbo">
+        <ul class="ull"></ul>
+
+        <div class="btn-l"></div>
+        <div class="btn-r"></div>
+      </div>
+
+      <div class="donghua">
+        <img src="./img/加载.png" alt="" />
+      </div>
+
+      <main>
+        <div class="tx">
+          <img src="./img2/55.png" alt="" />
+        </div>
+        <div class="kuang">
+          <ul class="tu"></ul>
+          <div class="an">
+            <button class="bt1">关闭</button>
+            <button class="bt2">保存</button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
+<script>
+  let ulDom = document.querySelector(".ull");
+  let lunboDom = document.querySelector(".lunbo");
+  console.log(ulDom);
+  for (let i = 0; i < 4; i++) {
+    ulDom.innerHTML += `
+    <li data-index="${i}">
+        <img src="./img/${i}.jpg" alt="">
+    </li>`;
+  }
+  let btnlDom = document.querySelector(".btn-l");
+  let btnrDom = document.querySelector(".btn-r");
+
+  var a = 0;
+  btnrDom.onclick = function (e) {
+    name(1);
+  };
+  btnlDom.onclick = function (e) {
+    name(2);
+  };
+
+  function name(index) {
+    if (index == 1) {
+      a = a - 1267;
+      if (a < -1267 * 3) {
+        a = 0;
+      }
+    } else if (index == 2) {
+      a = a + 1267;
+      if (a > 0) {
+        a = -1267 * 3;
+      }
+    }
+    ulDom.style.marginLeft = a + "px";
+  }
+
+  let dsq;
+  function box1() {
+    dsq = setInterval(() => {
+      name(1);
+    }, 3000);
+  }
+  box1();
+
+  lunboDom.onmouseenter = function () {
+    clearInterval(dsq);
+  };
+  lunboDom.onmouseleave = function () {
+    box1();
+  };
+
+  //
+
+  ulDom1 = document.querySelector(".kuang > ul");
+  txDom = document.querySelector(".tx ");
+  kuangDom = document.querySelector(".kuang ");
+  bt1Dom = document.querySelector(".bt1 ");
+  bt2Dom = document.querySelector(".bt2 ");
+  //   渲染图片
+  var f = 0;
+  for (i = 1; i < 41; i++) {
+    f++;
+    if (f > 7) {
+      f = 1;
+    }
+    ulDom1.innerHTML += `<li><img src="./img2/${f}.png" alt=""></li>`;
+  }
+  txDom.onclick = function (e) {};
+
+  // 点击改变样式存储图片地址
+  var mq = "";
+  ulDom1.onclick = function (e) {
+    if (e.target != this) {
+      var fu = e.target.parentElement;
+      $(fu).siblings().children().css({
+        borderRadius: "10px",
+      });
+      e.target.style.borderRadius = "50%";
+      mq = e.target.src;
+    }
+  };
+
+  // 点击保存头像
+  bt2Dom.onclick = function (e) {
+    if (mq == "") {
+      txDom.innerHTML = `<img src="./img2/55.png" alt="">`;
+    } else {
+      txDom.innerHTML = `<img src="${mq}" alt="">`;
+    }
+    kuangDom.style.top = "-910px";
+  };
+  // 绑定点击弹出按钮
+  txDom.onclick = function (e) {
+    console.log(e.target);
+    kuangDom.style.top = "0px";
+  };
+  // 绑定关闭按钮
+  bt1Dom.onclick = function (e) {
+    kuangDom.style.top = "-910px";
+  };
+</script>
