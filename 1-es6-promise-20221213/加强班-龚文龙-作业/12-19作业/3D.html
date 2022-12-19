@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.highcharts.com.cn/10.3.2/highcharts.js"></script>
+    <script src="https://cdn.highcharts.com.cn/10.3.2/highcharts-3d.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container" style="height: 400px"></div>
+  </body>
+</html>
+<script>
+  var chart = Highcharts.chart("container", {
+    chart: {
+      type: "pie",
+      options3d: {
+        enabled: true,
+        alpha: 45,
+      },
+    },
+    title: {
+      text: "财政拨款预算支出组成",
+    },
+    plotOptions: {
+      pie: {
+        innerSize: 200,
+        depth: 45, // 重点，实现3d效果
+      },
+    },
+    series: [
+      {
+        name: "货物金额",
+        data: [
+          ["一般项目", 8],
+          ["科技项目", 3],
+          ["其他项目", 1],
+          ["公用经费", 6],
+          ["人员经费", 8],
+        ],
+      },
+    ],
+  });
+</script>
