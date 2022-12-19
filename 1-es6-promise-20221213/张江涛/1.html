@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 800px;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+    <script>
+        var chart = Highcharts.chart('container', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: '月支出'
+            },
+            subtitle: {
+                text: '数据来源: WorldClimate.com'
+            },
+            xAxis: {
+                categories: [
+                    '人员经费', '公用经费', '一般项目', '科技项目', '其他项目'
+                ],
+                crosshair: true
+            },
+            yAxis: {
+                visible: true,
+                min: 0,
+                title: {
+                    text: '费用'
+                }
+            },
+            tooltip: {
+                // head + 每个 point + footer 拼接成完整的 table
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    dataLabels:{
+                        enabled:true
+                    },
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                data: [31058, 21585, 14811, 4989,],
+                color: '#ff0000'
+            }, {
+                data: [16253, 1458, 807, 1501,]
+            }]
+        });
+    </script>
+</body>
+
+</html>
