@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.highcharts.com.cn/10.3.2/highcharts.js"></script>
+    <script src="https://cdn.highcharts.com.cn/10.3.2/highcharts-3d.js"></script>
+    <link rel="stylesheet" href="./1.css">
+    <title>Document</title>
+    <!-- <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        font-family: 微软雅黑, MicrosoftYahei, sans-serif;
+        color: #fff;
+        background: #00065b url(../img/bg.jpg);
+        background-size: 100% 100%;
+        background-position: 0 0;
+        width: 100vw;
+        height: 100vh;
+        background-repeat: no-repeat;
+        overflow: hidden;
+     
+      }
+      main{
+        width: 100vw;
+      }
+      ul{
+         list-style: none;
+      }
+      .dhl{
+        width: 95vw;
+   
+        margin: auto;
+       display: flex;
+       margin-top: 1.0417vw;
+       justify-content: space-between;
+    /* border: 1px solid rgb(231, 15, 15); */
+   
+      }
+      .dhl>h2{
+        font-size: 1.3021vw;
+      }
+      .dhl>ul{ 
+        margin-top: 1.4063vw;
+        display: flex;
+        justify-content: space-between;
+        width: 29vw;
+      }
+      .dhl>ul>li{
+        width: 5.2083vw;
+        height: 1.5417vw;
+        line-height:1.5417vw;
+        font-size: .7813vw;
+        text-align: center;
+        background-image: url(./img/./bnt.png);
+        background-size: 100% 100%;
+        background-position: 0 0;
+        background-repeat: no-repeat;
+      }
+      .shuju{
+        width: 96vw;
+        height: 100vh;
+        margin-top: 10px;
+        display: flex;
+        margin: auto;
+        border: 1px solid rgb(228, 11, 11);
+      }
+      /* 数据部分 */
+
+      .shuju>div{
+        height: 88vh;
+      }
+
+      .shuju-left{
+        width: 40vw;
+      background-image: url(./img/amiddboxttop.png);
+        background-size: 100% 100%;
+        background-position: 0 0;
+        background-repeat: no-repeat;
+      }
+      .shuju-left >h3{
+       margin-top: 2.5vh;
+       margin-left: 2.5vw;
+       font-size: 1.1vw;
+      }
+      .shuju-center{
+        width: 28vw;
+        border: 1px solid rgb(239, 220, 7);
+
+      }
+      .shuju-right{
+        width: 28vw;
+        border: 1px solid rgb(218, 222, 224);
+      }
+
+      /* 大屏 */
+      .biao{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .biao>li{
+        width: 19.5vw;
+        height: 41.2vh;
+        border: 1px solid rgb(70, 255, 3);
+      }
+      .biao>li:nth-child(1)>h4{
+        margin-top: 1vw;
+        margin-left: 3.125vw;
+
+      }
+    </style> -->
+  </head>
+  <body>
+    <main>
+        <!-- 顶部 -->
+        <div class="dhl">
+            <ul>
+                <li>财务管理</li>
+                <li>采购管理</li>
+                <li>合同管理</li>
+                <li>资产管理</li>
+                <li>基础管理</li>
+            </ul>
+             <h2>浙江省公安厅劲舞保障精密智控服务平台</h3>
+             <ul>
+                <li>队伍管理</li>
+                <li>装备建设</li>
+                <li>车辆管控</li>
+                <li>行政管理</li>
+                <li>大院保安</li>
+            </ul>
+        </div>
+        <!-- 数据部分 -->
+        <div class="shuju"> 
+
+          <!-- 左边不服 -->
+           <div class="shuju-left">
+             <h3>2021年度财政拨款预算情况</h3>
+             <ul class="biao">
+              <li>
+                 <h4>财政拨款预算总收支</h4>
+                 <div style="display: flex; justify-content: space-between;margin-top: 100px;">
+                    <div style="text-align: center;">
+                      <h1>80818万元</h1>
+                        <h4 style="color: #bcbb4a;">财政拨款预算总收入</h4>
+                        <img src="./img/pan.jpg"  style="border-radius: 50%;" alt="">
+                    </div>
+                    <div style="text-align: center;">
+                      <h1>80818万元</h1>
+                      <h4 style="color: #4381b9;">财政拨款预算总收入</h4>
+                      <img src="./img/pan.jpg" style="border-radius: 50%;" alt="">
+                    </div>
+                 </div>
+              </li>
+              <!-- 柱状图 -->
+             <li id="container"></li>
+             <!-- 饼图 -->
+             <li id="container1"></li>
+             <!-- 饼图 -->
+             <li id="container2"></li>
+             </ul>
+           </div>
+
+           <!-- 中间部分 -->
+           <div class="shuju-center">
+               <div id="container3"></div>
+               <div></div>
+           </div>
+
+           <!-- 右边部分 -->
+           <div class="shuju-right">
+
+           </div>
+           
+        </div>
+    </main>
+
+  </body>
+</html>
+<script>
+
+var scancolors = ['#e2dc5b','#2ca0f7'];
+Highcharts.getOptions().colors = Highcharts.map(scancolors, function (scancolors) {
+    return {
+        radialGradient: { cx: 1, cy: -1, r: 3 },
+        stops: [[0, scancolors], [1, Highcharts.Color(scancolors).brighten(1).get('rgb')]]
+    };
+});
+
+// 柱状图
+var chart = Highcharts.chart('container',{
+	chart: {
+		type: 'column',
+    backgroundColor: 'rgba(255, 255, 255, 0)',
+	},
+	title: {
+		text: '财政拨款预算收支对比',
+    align:"left",
+    style:{
+        color:"#ffffff",
+       
+    }
+	},
+    legend: {
+        align: 'right',
+        verticalAlign: 'top',
+    },
+	
+	xAxis: {
+		categories: [
+			'人员经费','公用经费','一般项目','科技项目','其他项目'
+		],
+    labels:{
+   style:{
+    color:'#ffffff'
+   }
+  },
+		crosshair: true,
+    
+	},
+	yAxis: {
+      min:{},
+      tickPositions:[0,5000,10000,15000,20000,25000,30000,35000],
+		title: {
+			text: '',
+		},
+    labels:{
+   style:{
+    color:'#ffffff'
+   }
+  },
+	},
+	tooltip: {
+		// head + 每个 point + footer 拼接成完整的 table
+		// headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+		pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+		'<td style="padding:0"><b>{point.y:.1f}元</b></td></tr>',
+		footerFormat: '</table>',
+		// shared: true,
+		// useHTML: true
+	},
+	plotOptions: {
+		column: {
+			borderWidth: 0,
+            dataLabels: {
+ 		            enabled: true
+ 		        }
+		}
+	},
+	series: [{
+		name: '收入',
+		data: [31058, 8374,21585,14811,4989],
+        
+	}, {
+		name: '支出',
+		data: [16253,1458,1925,807,1501]
+	}]
+});
+
+// var scanchars = new Highcharts.Chart(scanchars_option);
+
+// 3D饼图
+var chart = Highcharts.chart("container1", {
+    chart: {
+      type: "pie",
+      backgroundColor: 'rgba(255, 255, 255, 0)',
+      options3d: {
+        enabled: true,
+        alpha: 45,
+      },
+    },
+    title: {
+      text: "财政拨款预算支出组成",
+      align:"left",
+    style:{
+        color:"#ffffff",
+       
+    }
+    },
+    plotOptions: {
+      pie: {
+        innerSize: 100,
+        depth: 45, // 重点，实现3d效果
+      },
+    },
+    series: [
+      {
+        name: "货物金额",
+        colors: [ '#434348', '#90ed7d', '#f7a35c', '#8085e9', 
+    '#f15c80',  '#8d4653', '#91e8e1'] ,
+        data: [
+          ["一般项目", 8],
+          ["科技项目", 3],
+          ["其他项目", 1],
+          ["公用经费", 6],
+          ["人员经费", 8],
+        ],
+      },
+    ],
+  });
+// 财政拨款预算支出组成
+  var chart = Highcharts.chart("container2", {
+    chart: {
+      type: "pie",
+      backgroundColor: 'rgba(255, 255, 255, 0)',
+      options3d: {
+        enabled: true,
+        alpha: 45,
+      },
+    },
+    title: {
+      text: "财政拨款预算支出组成",
+      align:"left",
+    style:{
+        color:"#ffffff",
+       
+    }
+    },
+    plotOptions: {
+      pie: {
+        innerSize: 100,
+        depth: 45, // 重点，实现3d效果
+      },
+    },
+    series: [
+      {
+        name: "货物金额",
+        colors: [ '#434348', '#90ed7d', '#f7a35c', '#8085e9', 
+    '#f15c80',  '#8d4653', '#91e8e1'] ,
+        data: [
+          ["一般项目", 20],
+          ["科技项目", 30],
+          ["其他项目", 1],
+          ["公用经费", 6],
+          ["人员经费", 5],
+        ],
+      },
+    ],
+  });
+
+  // 
+
+  var chart = Highcharts.chart('container3',{
+	chart: {
+		type: 'line',
+    backgroundColor: 'rgba(255, 255, 255, 0)',
+	},
+	title: {
+		text: '财政拨款预算收支对比',
+    align:"left",
+    x:40,
+    y:18,
+    style:{
+        color:"#ffffff",
+        
+    }
+	},
+    legend: {
+        align: 'right',
+        
+        verticalAlign: 'top',
+    },
+	
+	xAxis: {
+		categories: [
+			'1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'
+		],
+    labels:{
+   style:{
+    color:'#ffffff'
+   }
+  },
+		crosshair: true,
+    
+	},
+	yAxis: {
+      min:{},
+      tickPositions:[0,5000,10000,15000,20000,25000,30000,35000],
+		title: {
+			text: '',
+		},
+    labels:{
+   style:{
+    color:'#ffffff'
+   }
+  },
+	},
+	tooltip: {
+		// head + 每个 point + footer 拼接成完整的 table
+		headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+		pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+		'<td style="padding:0"><b>{point.y:.1f}元</b></td></tr>',
+		footerFormat: '</table>',
+		shared: true,
+		useHTML: true
+	},
+	plotOptions: {
+		column: {
+			borderWidth: 0,
+            dataLabels: {
+ 		            enabled: true
+ 		        }
+		}
+	},
+	series: [{
+		name: '支出率',
+		data: [1058, 2358,4258,3238,4028,1058],
+    color:"#ff0000"
+        
+	},
+  {
+		name: '支出率',
+		data: [1058, 3358,2258,2238,4528,2058, 3358,2258,4238,1028,30000],
+    color:'#006bec'
+	},
+  {
+		name: '支出率',
+		data: [1058, 1358,3258,2238,4558,3058, 2358,3258,2238,3028,20000],
+    color:'yellow'
+	}]
+});
+
+</script>
