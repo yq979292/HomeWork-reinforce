@@ -1,0 +1,116 @@
+
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  font-family: 微软雅黑, MicrosoftYahei, sans-serif;
+  color: #fff;
+  background: #00065b url(../img/bg.jpg);
+  background-size: 100% 100%;
+  background-position: 0 0;
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  overflow: hidden;
+
+}
+main{
+  width: 100vw;
+}
+ul{
+   list-style: none;
+}
+.dhl{
+  width: 95vw;
+  margin: auto;
+ display: flex;
+ margin-top: 1.0417vw;
+ justify-content: space-between;
+/* border: 1px solid rgb(231, 15, 15); */
+
+}
+.dhl>h2{
+  font-size: 1.3021vw;
+}
+.dhl>ul{ 
+  margin-top: 1.4063vw;
+  display: flex;
+  justify-content: space-between;
+  width: 29vw;
+}
+.dhl>ul>li{
+  width: 5.2083vw;
+  height: 1.5417vw;
+  line-height:1.5417vw;
+  font-size: .7813vw;
+  text-align: center;
+  background-image: url(./img/./bnt.png);
+  background-size: 100% 100%;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+.shuju{
+  width: 96vw;
+  height: 100vh;
+  margin-top: 10px;
+  display: flex;
+  margin: auto;
+  /* border: 1px solid rgb(228, 11, 11); */
+}
+/* 数据部分 */
+
+.shuju>div{
+  height: 88vh;
+}
+
+.shuju-left{
+  width: 40vw;
+background-image: url(./img/amiddboxttop.png);
+  background-size: 100% 100%;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+.shuju-left >h3{
+ margin-top: 2.5vh;
+ margin-left: 2.5vw;
+ font-size: 1.1vw;
+}
+.shuju-center{
+  width: 28vw;
+  /* border: 1px solid rgb(239, 220, 7); */
+
+}
+.shuju-right{
+  width: 28vw;
+  border: 1px solid rgb(218, 222, 224);
+}
+
+/* 大屏 */
+.biao{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.biao>li{
+  width: 19.5vw;
+  height: 41.2vh;
+  /* border: 1px solid rgb(70, 255, 3); */
+}
+.biao>li:nth-child(1)>h4{
+  margin-top: 0.3vw;
+  margin-left: 3.125vw;
+
+}
+
+.shuju-center>div{
+    width: 28vw;
+    height: 44vh;
+    /* border: 1px solid rgb(235, 5, 5); */
+    background-image: url(./img/amiddboxtbott2.png);
+    background-size: 100% 100%;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+  
+}

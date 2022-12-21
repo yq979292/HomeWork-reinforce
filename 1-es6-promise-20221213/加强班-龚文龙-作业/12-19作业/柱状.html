@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+    <title>Document</title>
+    <style>
+ #container {
+            width: 800px;
+            height: 500px;
+         
+        }
+    </style>
+</head>
+<body>
+       <div id="container"></div>
+</body>
+</html>
+<script>
+
+var scancolors = ['#d4d33d','#2ca0f7'];
+Highcharts.getOptions().colors = Highcharts.map(scancolors, function (scancolors) {
+    return {
+        radialGradient: { cx: 0, cy: -1, r: 3 },
+        stops: [[0, scancolors], [1, Highcharts.Color(scancolors).brighten(1).get('rgb')]]
+    };
+});
+
+
+var chart = Highcharts.chart('container',{
+	chart: {
+		type: 'column'
+	},
+	title: {
+		text: '财政拨款预算收支对比'
+	},
+    legend: {
+        align: 'right',
+        verticalAlign: 'top',
+
+    },
+	
+	xAxis: {
+		categories: [
+			'人员经费','公用经费','一般项目','科技项目','其他项目'
+		],
+		crosshair: true
+	},
+	yAxis: {
+      min:{},
+      tickPositions:[0,5000,10000,15000,20000,25000,30000,35000],
+		title: {
+			text: ''
+		}
+	},
+  
+	tooltip: {
+		// head + 每个 point + footer 拼接成完整的 table
+		// headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+		pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+		'<td style="padding:0"><b>{point.y:.1f}元</b></td></tr>',
+		footerFormat: '</table>',
+		// shared: true,
+		// useHTML: true
+	},
+	plotOptions: {
+		column: {
+			borderWidth: 0,
+            dataLabels: {
+ 		            enabled: true
+ 		        }
+		}
+	},
+	series: [{
+		name: '收入',
+		data: [31058, 8374,21585,14811,4989],
+        
+	}, {
+		name: '支出',
+		data: [16253,1458,1925,807,1501]
+	}]
+});
+
+var scanchars = new Highcharts.Chart(scanchars_option);
+</script>

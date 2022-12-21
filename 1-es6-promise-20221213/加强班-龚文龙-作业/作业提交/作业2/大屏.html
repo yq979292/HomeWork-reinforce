@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./echarts/echarts.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            background-color: #1e2131;
+        }
+     
+      .top {
+        width: 2000px;
+        height: 443px;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        margin-top: 40px;
+      }
+      .top > div:nth-child(1) {
+        width: 992px;
+        height: 422px;
+        border: 1px solid #3188ff;
+      }
+      .top > div:nth-child(2) {
+        width: 461px;
+        height: 422px;
+        border: 1px solid #3188ff;
+      }
+     .ml {
+        width: 461px;
+        height: 322px;
+      }
+      .top > div:nth-child(3) {
+        width: 461px;
+        height: 422px;
+        border: 1px solid #3188ff;
+      }
+      .bt {
+        width: 2000px;
+        height: 443px;
+        display: flex;
+
+        justify-content: space-between;
+        margin: 0 auto;
+        margin-top: 40px;
+      }
+      .bt > div {
+        width: 461px;
+        height: 422px;
+        border: 1px solid #3188ff;
+      }
+     
+      .tjt{
+        width: 261px;
+        height: 322px;
+        margin: 0 auto;
+      }
+  
+      h2 {
+        color: rgb(255, 38, 0);
+        width: 461px;
+        height: 40px;
+        font-size: 30px;
+        background-color:#252e44 ;
+      }
+      .h2{
+        width: 992px;
+
+      }
+      h1{
+      color: #86b5d2;
+      margin-left: 35%;
+      margin-top: 10%;
+      }
+      h1 >span{
+          margin-left: 5px;
+          padding: 12px ;
+          background-color: #204397;
+          
+      }
+      .hong{
+        display: flex;
+        justify-content:space-around;
+      }
+      .hong>li{
+          margin-top: 50px;
+          width: 100px;
+          height: 120px;
+        border: 1px solid #000;
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         text-align: center;
+        
+          
+      }
+      .hong>li>span{
+          font-size: 20px;
+          background-color: #252e44;
+          padding: 10px ;
+          color: white;
+
+      }
+      .hong>li>p{
+        font-size: 20px;
+        color: #f1b601;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bj">
+      <div class="top">
+        <div>
+          <div>
+              <h2 class="h2">当天实时发稿量</h2>
+          </div>
+          <div>
+           <h1>总发稿量<span>3</span><span>8</span><span>9</span><span>1</span>条 </h1>
+           <ul class="hong">
+               <li>
+                   <span>宏观经济</span>
+                   <p>1292条</p>
+               </li>
+               <li>
+                <span>宏观经济</span>
+                <p>1292条</p>
+            </li>
+            <li>
+                <span>宏观经济</span>
+                <p>1292条</p>
+            </li>
+            <li>
+                <span>宏观经济</span>
+                <p>1292条</p>
+            </li>
+            <li>
+                <span>宏观经济</span>
+                <p>1292条</p>
+            </li>
+            <li>
+                <span>宏观经济</span>
+                <p>1292条</p>
+            </li>
+
+            
+           </ul>
+          </div>
+        </div>
+        <div>
+            
+          <div>
+            <h2>个人发稿量排行</h2>
+          </div>
+          <div class="fg ml"></div>
+          
+        </div>
+        <div>
+        <div>
+            <h2>建稿类型统计图</h2>
+          </div>
+          <div class="jg ml"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bt">
+        <div>
+            <div>
+                <div><h2>各栏目发稿量趋势图</h2></div>
+            </div>
+            <div class="gl ml"></div>
+        </div>
+        <div>
+            <div>
+                <div><h2>人机发稿量占比</h2></div>
+            </div>
+            <div class="rj ml"></div>
+        </div>
+        <div>
+            <div>
+                <div><h2>各栏目发稿量分布图</h2></div>
+            </div>
+            <div class="fbt ml"></div>
+        </div>
+        <div>
+            <div>
+                <div><h2>建稿类型统计图</h2></div>
+            </div>
+            <div class="tjt ml"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  var fg = echarts.init(document.querySelector(".fg"));
+  fg.setOption({
+    tooltip: {
+      trigger: "axis",
+      axisPointer: {
+        type: "shadow",
+      },
+    },
+
+    xAxis: {
+      max: 700,
+    },
+    yAxis: {
+      boundaryGap: false,
+      type: "category",
+      data: [
+        "阿萨",
+        "立海运",
+        "万能家",
+        "违纪",
+        "盈司看",
+        "小乔",
+        "奥苏桥",
+        "萨克斯",
+        "地里姣",
+        "阿克苏",
+      ],
+    },
+    series: [
+      {
+        name: "发搞量",
+        type: "bar",
+        data: [20, 31, 38, 65, 100, 107, 203, 300, 400, 635],
+        itemStyle: {
+          color: "gold",
+        },
+      },
+    ],
+  });
+
+  var jg = echarts.init(document.querySelector(".jg"));
+  jg.setOption({
+    tooltip: {
+      trigger: "axis",
+    },
+    legend: {
+      data: [
+        {
+          name: "原创",
+          icon: "circle",
+        },
+        {
+          name: "编辑",
+          icon: "circle",
+        },
+        {
+          name: "编译",
+          icon: "circle",
+        },
+      ],
+      top: "bottom",
+      itemWidth: 15,
+      itemHeight: 15,
+      textStyle: {
+        color: "#fff",
+      },
+    },
+
+    xAxis: {
+      boundaryGap: false,
+      data: [
+        "宏观经济",
+        "资本市场",
+        "货币市场",
+        "外汇市场",
+        "债卷市场",
+        "大宗商品",
+      ],
+    },
+    yAxis: {
+      max: 15,
+    },
+    series: [
+      {
+        name: "原创",
+        type: "bar",
+        stack: "total",
+
+        emphasis: {
+          focus: "series",
+        },
+        data: [3, 4, 4, 2, 5, 3],
+        itemStyle: {
+          color: "#2756ca",
+        },
+      },
+      {
+        name: "编辑",
+        type: "bar",
+        stack: "total",
+        emphasis: {
+          focus: "series",
+        },
+        data: [2, 2, 3, 2, 1, 7],
+        itemStyle: {
+          color: "#8ec63f",
+        },
+      },
+      {
+        name: "编译",
+        type: "bar",
+        stack: "total",
+        emphasis: {
+          focus: "series",
+        },
+        data: [5, 3, 4, 7, 2, 4],
+        itemStyle: {
+          color: "#8028dc",
+        },
+      },
+    ],
+  });
+
+
+
+  var gl =echarts.init(document.querySelector(".gl"));
+  
+  gl.setOption ({
+  title: {
+  
+  },
+  tooltip: {
+    trigger: 'axis'
+  },
+  legend: {
+    data: ['全球经济', '宏观经济', '货币市场', '外汇市场', '债卷市场']
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+ 
+  xAxis: {
+    type: 'category',
+    boundaryGap: false,
+    data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'jun', 'jul', 'Aug', 'Sep', 'Oct']
+  },
+  yAxis: {
+     max:40
+  },
+  series: [
+    {
+      name: '全球经济',
+      type: 'line',
+      stack: 'Total',
+      data: [3, 12, 10, 34, 20, 23, 10,30,20,10]
+    },
+    {
+      name: '宏观经济',
+      type: 'line',
+      
+      data: [22, 12, 11, 24, 20, 30, 10,20,30,15]
+    },
+    {
+      name: '货币市场',
+      type: 'line',
+     
+      data: [10, 32, 20, 14, 10, 30, 40,24, 20,10]
+    },
+    {
+      name: '外汇市场',
+      type: 'line',
+     
+      data: [10, 30, 40,24, 20,10,22, 12, 11, 24,]
+    },
+    {
+      name: '债卷市场',
+      type: 'line',
+      data: [20, 23, 10,30,20,10,14, 10, 30, 40,]
+    }
+  ]
+});
+
+var rj =echarts.init(document.querySelector(".rj"));
+
+    rj.setOption({
+ 
+     
+
+        tooltip:{},
+        series: [
+            {
+               
+              
+                type: 'pie',    
+                data: [
+                    {
+                        name: '机器人',   
+                        value: 22.1 ,
+                        itemStyle: {    
+                            color: '#8ec63f'
+                        } 
+                    },
+                    {
+                        name: '人工',
+                        value: 77.9,
+                        itemStyle: {    
+                            color: '#8129dd'
+                        }
+                    },
+                  
+                 
+                  
+                ],
+               
+                roseType: false,
+                radius: ['50%', '80%']
+            }
+        ]
+    });
+
+
+    var fbt = echarts.init(document.querySelector(".fbt"));
+    fbt.setOption({
+ 
+  tooltip: {
+    trigger: 'item'
+  },
+ 
+  series: [
+    {
+      name: '发稿量占比例',
+      type: 'pie',
+      radius: '50%',
+      data: [
+        { value: 1048, name: '全球经济' },
+        { value: 735, name: '宏观经济' },
+        { value: 580, name: '债卷市场' },
+        { value: 484, name: '大宗商品:' },
+        { value: 300, name: '全球经济' }
+      ],
+  
+    }
+  ]
+});          
+
+
+var tjt = echarts.init(document.querySelector(".tjt"));
+
+tjt.setOption({
+    tooltip: {
+      trigger: "axis",
+    },
+    legend: {
+      data: [
+        {
+          name: "原创",
+          icon: "circle",
+        },
+        {
+          name: "编辑",
+          icon: "circle",
+        },
+        {
+          name: "编译",
+          icon: "circle",
+        },
+      ],
+      top: "bottom",
+      itemWidth: 15,
+      itemHeight: 15,
+      textStyle: {
+        color: "#fff",
+      },
+    },
+
+    xAxis: {
+      boundaryGap: false,
+      data: [
+        "宏观经济",
+        "资本市场",
+        "货币市场",
+        "外汇市场",
+        "债卷市场",
+        "大宗商品",
+      ],
+    },
+    yAxis: {
+      max: 15,
+    },
+    series: [
+      {
+        name: "原创",
+        type: "bar",
+        stack: "total",
+
+        emphasis: {
+          focus: "series",
+        },
+        data: [3, 4, 4, 2, 5, 3],
+        itemStyle: {
+          color: "#2756ca",
+        },
+      },
+      {
+        name: "编辑",
+        type: "bar",
+        stack: "total",
+        emphasis: {
+          focus: "series",
+        },
+        data: [2, 2, 3, 2, 1, 7],
+        itemStyle: {
+          color: "#8ec63f",
+        },
+      },
+      {
+        name: "编译",
+        type: "bar",
+        stack: "total",
+        emphasis: {
+          focus: "series",
+        },
+        data: [5, 3, 4, 7, 2, 4],
+        itemStyle: {
+          color: "#8028dc",
+        },
+      },
+    ],
+  });
+
+</script>
