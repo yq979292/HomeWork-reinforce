@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		#container {
+			width: 800px;
+			height: 500px;
+		}
+	</style>
+</head>
+
+<body>
+	<script src="https://cdn.highcharts.com.cn/10.3.2/highcharts.js"></script>
+    <script src="https://cdn.highcharts.com.cn/10.3.2/highcharts-3d.js"></script>
+	<div id="container"></div>
+	<script>
+		var chart = Highcharts.chart('container', {
+		chart: {
+				type: 'pie',
+				options3d: {
+						enabled: true,
+						alpha: 50
+				}
+		},
+		title: {
+				text: '简数科技每周水果消耗量'
+		},
+		subtitle: {
+			
+                // 设置控件的位置以及对齐方式
+                layout: 'vertical',
+                align: 'center',
+                verticalAlign: 'middle',
+          
+				text: '共21946万元'
+		},
+		plotOptions: {
+				pie: {
+					dataLabels:{
+                        enabled:true
+                    },
+						innerSize: 300,
+						depth: 45
+				}
+		},
+		series: [{
+				name: '货物金额',
+				data: [
+						['人员经费:16253万元', 16253],
+						['公用经费:1458万元', 1458],
+						['一般经费:1925万元', 1925],
+						['科技经费:807万元', 807],
+						['其他项目:1501万元', 1501],
+				]
+		}]
+});
+	</script>
+</body>
+
+</html>
